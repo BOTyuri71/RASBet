@@ -7,7 +7,9 @@ var cors = require("cors");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var testAPIRouter = require("./routes/testAPI");
+var apostaRouter = require("./routes/aposta");
+var apostadorRouter = require("./routes/apostador");
+var jogoRouter = require("./routes/jogo");
 
 var app = express();
 
@@ -25,7 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use("/testAPI", testAPIRouter);
+app.use("/aposta", apostaRouter);
+app.use("/apostador", apostadorRouter);
+app.use("/jogo", jogoRouter);
 
 
 
