@@ -10,10 +10,10 @@ var Aposta = function(a){
 
 module.exports=Aposta;
 
-Aposta.create = function (a,conn) {
+Aposta.create = function (ap,conn) {
     return new Promise(function(resolve, reject) {
       conn.query(`INSERT INTO Aposta (idAposta, dataCriacao, valor, Apostador_idApostador, resultado)
-                  VALUES (?, ?, ?, ?, ?);`,[a.idAposta, a.data, a.valor, a.idApostador, a.resultado],
+                  VALUES (?, ?, ?, ?, ?);`,[ap.idAposta, ap.data, ap.valor, ap.idApostador, ap.resultado],
           function (err, res) {
             if(err) {
                 console.log("error: ", err);
