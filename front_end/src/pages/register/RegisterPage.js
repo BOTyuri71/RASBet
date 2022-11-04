@@ -20,6 +20,7 @@ export default function Form() {
 
             <Form1 onSubmit={handleSubmit(onSubmit)}>
                 <Input1 type="text" {...register("email")} placeholder='E-mail'></Input1>
+                <Input1 type="text" {...register("nome")} placeholder='Nome (Primeiro e último)'></Input1>
                 <Input1 type="password" {...register("password")} placeholder='Palavra-passe'></Input1>
                 <Controller
                     control={control}

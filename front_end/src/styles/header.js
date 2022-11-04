@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {NavLink} from 'react-router-dom';
 
 export const Nav = styled.nav`
     height: 50px;
@@ -16,5 +17,16 @@ export const Header1 = styled.div`
 `;
 
 export const H2 = styled.h2`
-    padding-left: 10px;
+    text-decoration: none;
+    padding-left: 20px;
 `;
+
+
+export const Img1 = styled.img`
+    height: 30px;
+    width: 30px;
+    padding: 0 20px;
+`;
+
+
+
