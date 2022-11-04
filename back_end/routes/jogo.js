@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Jogo = require('../controllers/jogo.js')
 
+module.exports = router;
 
 router.post('/update/:idJogo&:state',function(req,res){
     Jogo.update(req.params.idJogo,req.params.state)

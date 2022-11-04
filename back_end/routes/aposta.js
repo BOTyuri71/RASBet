@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Aposta = require('../controllers/aposta')
 
+module.exports = router;
 
 router.post('/create/',function(req,res){
     Aposta.createAposta(req.body)

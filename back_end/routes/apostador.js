@@ -3,6 +3,7 @@ var router = express.Router();
 var Apostador = require('../controllers/apostador')
 var bcrypt = require('bcryptjs')
 
+module.exports = router;
 
 router.post('/create/',function(req,res){
     console.log(req)
