@@ -1,4 +1,5 @@
 var sql = require('../models/db.js');
+module.exports=Aposta;
 
 var Aposta = function(a){
     this.idAposta=a.idAposta;
@@ -8,7 +9,6 @@ var Aposta = function(a){
     this.resultado=a.resultado;
 }
 
-module.exports=Aposta;
 
 Aposta.create = function (a,conn) {
     return new Promise(function(resolve, reject) {

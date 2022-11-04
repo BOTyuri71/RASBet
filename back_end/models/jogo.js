@@ -9,7 +9,7 @@ var Jogo = function(a){
     this.resultado=a.resultado;
 }
 
-module.exports=Aposta;
+module.exports=Jogo;
 
 Jogo.updateEstado = function (idJogo,estado){
     return new Promise(function(resolve, reject) {

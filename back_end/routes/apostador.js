@@ -5,9 +5,10 @@ var bcrypt = require('bcryptjs')
 
 
 router.post('/create/',function(req,res){
-    Apostador.put(req.body)
+    console.log(req)
+    /*Apostador.put(req.body)
         .then(apostador => res.jsonp(apostador))
-        .catch(erro => res.status(500).jsonp(erro))
+        .catch(erro => res.status(500).jsonp(erro))*/
 });
 
 router.post('/createmov/',function(req,res){
