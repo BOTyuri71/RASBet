@@ -6,6 +6,7 @@ var bcrypt = require('bcryptjs')
 module.exports = router;
 
 router.post('/create/',function(req,res){
+    console.log("aovnw ovmwkffvnefhwikj m")
     console.log(req)
     /*Apostador.put(req.body)
         .then(apostador => res.jsonp(apostador))

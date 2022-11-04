@@ -4,17 +4,30 @@ import DatePicker from 'react-date-picker';
 import {Controller,useForm} from 'react-hook-form';
 import {Register,Col1,Img1,Div1,Section1,Form1,Input1,Button1} from '../../styles/form'
 import Header from '../../components/header/Header';
+import axios from 'axios';
 
 
 
 export default function Form() {
 
-    const [email,setEmail] = useState('')
-    const [nome,setNome] = useState('')
-    const [password,setPassword] = useState('')
-    const [date, setDate] = useState(new Date());
-    const [nif,setNif] = useState('')
+    const [emailReg,setEmail] = useState('')
+    const [nomeReg,setNome] = useState('')
+    const [passwordReg,setPassword] = useState('')
+    const [dateReg, setDate] = useState(new Date());
+    const [nifReg,setNif] = useState('')
     const {control} = useForm()
+
+    const register = () => {
+        axios.post('https://localhost:9000/apostador/create',{
+            email : emailReg, 
+            nome : nomeReg, 
+            password : passwordReg, 
+            date : dateReg, 
+            nif : nifReg
+        }).then((response) => {
+            console.log(response);
+        });
+    };
 
     return (
         <div>
@@ -41,7 +54,7 @@ export default function Form() {
     />
                     <Input1 type="text" onChange={(e) => {setNif(e.target.value)}} placeholder='NIF'></Input1>
 
-                    <Button1 className='btn'>Concluir</Button1>
+                    <Button1 className='btn' onClick={register}>Concluir</Button1>
                 </Form1>
             </Col1>
             <div className='col-2'>
