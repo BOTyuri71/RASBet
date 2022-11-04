@@ -8,42 +8,38 @@ import Header from '../../components/header/Header';
 
 
 export default function Form() {
-    const [value, onChange] = useState(new Date());
-    const {control,register,handleSubmit} = useForm()
-    const onSubmit = data => {console.log(data);
-                                useEffect(() => {
-                                    fetch("/home",{
-                                        method: "POST",
-                                        headers: {
-                                            'Content-type': "application/json"
-                                        },
-                                        body: JSON.stringify(data)
-                                    })
-                                .then(res => res.json())
-                                .then(data => console.log('Sent data do backend'))
-                                },[])
-                            }
+
+    const [email,setEmail] = useState('')
+    const [nome,setNome] = useState('')
+    const [password,setPassword] = useState('')
+    const [date, setDate] = useState(new Date());
+    const [nif,setNif] = useState('')
+    const {control} = useForm()
+
     return (
+        <div>
+        <Header/>
         <Section1>
             <Div1>
             <Register>
             <Col1>
                 <h2>Registo</h2>
 
-                <Form1 className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
-                    <Input1 type="text" {...register("email")} placeholder='E-mail'></Input1>
-                    <Input1 type="password" {...register("password")} placeholder='Palavra-passe'></Input1>
+                <Form1>
+                    <Input1 type="text" onChange={(e) => {setEmail(e.target.value)}} placeholder='E-mail'></Input1>
+                    <Input1 type="text" onChange={(e) => {setNome(e.target.value)}} placeholder='Nome (Primeiro e último)'></Input1>
+                    <Input1 type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder='Palavra-passe'></Input1>
                     <Controller
                         control={control}
                         name='date-input'
                         render={({ field }) => (
                             <DatePicker
-                                onChange={(date) => field.onChange(date)}
+                                onChange={(date) => field.setDate(date)}
                                 selected={field.value}
         />
     )}
     />
-                    <Input1 type="text" {...register("nif")} placeholder='NIF'></Input1>
+                    <Input1 type="text" onChange={(e) => {setNif(e.target.value)}} placeholder='NIF'></Input1>
 
                     <Button1 className='btn'>Concluir</Button1>
                 </Form1>
@@ -54,5 +50,6 @@ export default function Form() {
             </Register>
             </Div1>
         </Section1>
+        </div>
     )
 }
