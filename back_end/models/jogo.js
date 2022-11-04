@@ -9,11 +9,15 @@ var Jogo = function(a){
     this.resultado=a.resultado;
 }
 
-module.exports=Aposta;
+module.exports=Jogo;
 
 Jogo.updateEstado = function (idJogo,estado){
     return new Promise(function(resolve, reject) {
-        sql.query(``,[],
+        sql.query( `UPDATE Jogo 
+                    SET
+                        estado = ?
+                    WHERE
+                        idJogo = ?;`,[idJogo, estado],
             function (err, res) {
                 if(err) {
                     reject(err);
@@ -29,7 +33,7 @@ Jogo.updateEstado = function (idJogo,estado){
 
 Jogo.getAllJogos =  function(){
     return new Promise( function(resolve, reject) {
-        sql.query(``,
+        sql.query(`SELECT * FROM Jogo;`,
             function(err,res){
                 if(err){
                     console.log("error: ",err);

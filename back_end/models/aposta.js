@@ -1,4 +1,5 @@
 var sql = require('../models/db.js');
+module.exports=Aposta;
 
 var Aposta = function(a){
     this.idAposta=a.idAposta;
@@ -8,11 +9,11 @@ var Aposta = function(a){
     this.resultado=a.resultado;
 }
 
-module.exports=Aposta;
 
-Aposta.create = function (a,conn) {
+Aposta.create = function (ap,conn) {
     return new Promise(function(resolve, reject) {
-      conn.query(``,[],
+      conn.query(`INSERT INTO Aposta (idAposta, dataCriacao, valor, Apostador_idApostador, resultado)
+                  VALUES (?, ?, ?, ?, ?);`,[ap.idAposta, ap.data, ap.valor, ap.idApostador, ap.resultado],
           function (err, res) {
             if(err) {
                 console.log("error: ", err);
