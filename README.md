@@ -10,7 +10,7 @@
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/BOTyuri71/CC_DNS](https://github.com/BOTyuri71/CC_DNS)
+Project Link: [https://github.com/BOTyuri71/CC_DNS](https://github.com/BOTyuri71/RASBet)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
