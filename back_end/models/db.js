@@ -1,7 +1,7 @@
 var mysql = require('mysql2')
 var db_config = {
-  host: 'localhost',
-  user: 'user1',
+  host: 'sql8.freesqldatabase.com',
+  user: 'sql8575971',
   password: 'abcdefgh',
   database: 'rasbet',
   timezone: "Z",
