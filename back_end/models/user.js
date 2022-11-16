@@ -17,7 +17,7 @@ class User {
         return new Promise(function (resolve, reject) {
             bcrypt.genSalt(salt, function (err, salt) {
                 bcrypt.hash(u.password, salt, function (err, hash) {
-                    sql.query("INSERT INTO Jogo (data_inicio, Equipa_idEquipa2, Equipa_idEquipa1, Odds_idOdds, estado, resultado) VALUES (?,?,?,?,?,?);",
+                    sql.query("INSERT INTO Apostador (nome, email, password, dataN, nCC, nif, saldo) VALUES (?,?,?,?,?,?,?);",
                         [u.nome, u.email, u.password, u.dataN, u.nCC, u.nif, u.saldo],
                         function (err, res) {
                             if (err) {
