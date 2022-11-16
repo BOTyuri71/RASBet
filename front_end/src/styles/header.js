@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 
 export const Nav = styled.nav`
     height: 50px;
-    border: 1px solid #dfdfdf;
+    background-color: #ffa927;
 `;
 
 export const Header1 = styled.div`
@@ -19,12 +19,14 @@ export const Header1 = styled.div`
 export const H2 = styled.h2`
     text-decoration: none;
     padding-left: 20px;
+    font-family: sans-serif;
+    font-size: large;
 `;
 
 
 export const Img1 = styled.img`
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 100px;
     padding: 0 20px;
 `;
 
