@@ -1,4 +1,4 @@
-var sql = require('../models/database.js');
+var sql = require('../database/db.js');
 
 class Jogo {
     constructor(a) {
@@ -9,28 +9,11 @@ class Jogo {
         this.estado = a.estado;
         this.resultado = a.resultado;
     }
-    static updateEstado(idJogo, estado) {
+    static create_update() {
         return new Promise(function (resolve, reject) {
-            sql.query(`UPDATE Jogo 
-                    SET
-                    estado = ?
-                    WHERE
-                    idJogo = ?;`, [idJogo, estado],
-                function (err, res) {
-                    if (err) {
-                        reject(err);
-                    }
-                    else {
-                        resolve(res.insertId);
-                    }
-                }
-            );
-        });
-    }
-    static create(j) {
-        return new Promise(function (resolve, reject) {
-            sql.query(`INSERT INTO Jogo (data_inicio Equipa_idEquipa2 Equipa_idEquipa1 Odds_idOdds estado resultado) VALUES (?,?,?,?,?,?);`, 
-            [j.data_inicio, j.Equipa_idEquipa2, j.Equipa_idEquipa1, j.Odds_idOdds, j.estado, j.resultado],
+            sql.query(`INSERT INTO Jogo (idJogo, data_inicio, Equipa_idEquipa2, Equipa_idEquipa1, estado, resultado, odd1, oddX, odd2) VALUES (?,?,?,?,?,?,?,?,?)
+                       ON DUPLICATE KEY UPDATE data_inicio = ?, Equipa_idEquipa2 = ?, Equipa_idEquipa1 = ?, estado = ?, resultado = ?, odd1 = ?, oddX = ?, odd2 = ?;`, 
+                       [this.idJogo,this.data_inicio, this.Equipa_idEquipa2, this.Equipa_idEquipa1, this.estado, this.resultado, this.odd1, this.oddX, this.odd2, this.data_inicio, this.Equipa_idEquipa2, this.Equipa_idEquipa1, this.estado, this.resultado, this.odd1, this.oddX, this.odd2],
                 function (err, res) {
                     if (err) {
                         reject(err);
