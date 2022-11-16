@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema sql8575971
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema sql8575971
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `sql8575971` DEFAULT CHARACTER SET utf8 ;
+USE `sql8575971` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Apostador`
+-- Table `sql8575971`.`Apostador`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Apostador` (
+CREATE TABLE IF NOT EXISTS `sql8575971`.`Apostador` (
   `idApostador` INT NOT NULL,
   `email` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
@@ -30,9 +30,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Aposta`
+-- Table `sql8575971`.`Aposta`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Aposta` (
+CREATE TABLE IF NOT EXISTS `sql8575971`.`Aposta` (
   `idAposta` INT NOT NULL,
   `dataCriacao` VARCHAR(45) NULL,
   `valor` FLOAT NULL,
@@ -42,16 +42,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Aposta` (
   INDEX `fk_Aposta_Apostador_idx` (`Apostador_idApostador` ASC) VISIBLE,
   CONSTRAINT `fk_Aposta_Apostador`
     FOREIGN KEY (`Apostador_idApostador`)
-    REFERENCES `mydb`.`Apostador` (`idApostador`)
+    REFERENCES `sql8575971`.`Apostador` (`idApostador`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Equipa`
+-- Table `sql8575971`.`Equipa`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Equipa` (
+CREATE TABLE IF NOT EXISTS `sql8575971`.`Equipa` (
   `idEquipa` INT NOT NULL,
   `nome` VARCHAR(45) NULL,
   `desporto` VARCHAR(45) NULL,
@@ -61,9 +61,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Odds`
+-- Table `sql8575971`.`Odds`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Odds` (
+CREATE TABLE IF NOT EXISTS `sql8575971`.`Odds` (
   `idOdds` INT NOT NULL,
   `oddC` FLOAT NULL,
   `oddE` FLOAT NULL,
@@ -73,9 +73,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Jogo`
+-- Table `sql8575971`.`Jogo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Jogo` (
+CREATE TABLE IF NOT EXISTS `sql8575971`.`Jogo` (
   `idJogo` INT NOT NULL,
   `data_inicio` DATETIME NULL,
   `Equipa_idEquipa2` INT NOT NULL,
@@ -89,26 +89,26 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Jogo` (
   INDEX `fk_Jogo_Odds1_idx` (`Odds_idOdds` ASC) VISIBLE,
   CONSTRAINT `fk_Jogo_Equipa1`
     FOREIGN KEY (`Equipa_idEquipa2`)
-    REFERENCES `mydb`.`Equipa` (`idEquipa`)
+    REFERENCES `sql8575971`.`Equipa` (`idEquipa`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Jogo_Equipa2`
     FOREIGN KEY (`Equipa_idEquipa1`)
-    REFERENCES `mydb`.`Equipa` (`idEquipa`)
+    REFERENCES `sql8575971`.`Equipa` (`idEquipa`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Jogo_Odds1`
     FOREIGN KEY (`Odds_idOdds`)
-    REFERENCES `mydb`.`Odds` (`idOdds`)
+    REFERENCES `sql8575971`.`Odds` (`idOdds`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Aposta_has_Jogo`
+-- Table `sql8575971`.`Aposta_has_Jogo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Aposta_has_Jogo` (
+CREATE TABLE IF NOT EXISTS `sql8575971`.`Aposta_has_Jogo` (
   `Aposta_idAposta` INT NOT NULL,
   `Jogo_idJogo` INT NOT NULL,
   `resultado_Previsto` INT NULL,
@@ -117,21 +117,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Aposta_has_Jogo` (
   INDEX `fk_Aposta_has_Jogo_Aposta1_idx` (`Aposta_idAposta` ASC) VISIBLE,
   CONSTRAINT `fk_Aposta_has_Jogo_Aposta1`
     FOREIGN KEY (`Aposta_idAposta`)
-    REFERENCES `mydb`.`Aposta` (`idAposta`)
+    REFERENCES `sql8575971`.`Aposta` (`idAposta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Aposta_has_Jogo_Jogo1`
     FOREIGN KEY (`Jogo_idJogo`)
-    REFERENCES `mydb`.`Jogo` (`idJogo`)
+    REFERENCES `sql8575971`.`Jogo` (`idJogo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Movimento`
+-- Table `sql8575971`.`Movimento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Movimento` (
+CREATE TABLE IF NOT EXISTS `sql8575971`.`Movimento` (
   `idTransacao` INT NOT NULL,
   `valor` FLOAT NULL,
   `saldo` FLOAT NULL,
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Movimento` (
   INDEX `fk_Movimento_Apostador1_idx` (`Apostador_idApostador` ASC) VISIBLE,
   CONSTRAINT `fk_Movimento_Apostador1`
     FOREIGN KEY (`Apostador_idApostador`)
-    REFERENCES `mydb`.`Apostador` (`idApostador`)
+    REFERENCES `sql8575971`.`Apostador` (`idApostador`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
