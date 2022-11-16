@@ -2,9 +2,7 @@ const User = require("../models/user.js");
 const Users = module.exports;
 
 Users.put = (user) => {
-    if (!User.getUser(user)) {
-        return User.regist(user);
-    }
+    return User.register(user);
 };
 
 Users.createMov = (idUser, valor, saldo, data) => {

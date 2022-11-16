@@ -5,19 +5,19 @@ block content
     .w3-container.w3-blue
         h3 Registo de novo utilizador:
     form.w3-container(action='/user/register' method='POST')
-        label name:
-        input.w3-input(type="text" name="name") 
+        label nome:
+        input.w3-input(type="text" name="nome") 
         label email:
         input.w3-input(type="text" name="email")
-        label birthdate:
-        input.w3-input(type="date" name="birthdate")
-        label Male:
-        input.w3-radio(type="radio" name="gender" value=0)
-        label Female:
-        input.w3-radio(type="radio" name="gender" value=1)
-        label savings:
-        input.w3-input(type="number" name="savings")
-        label Password:
+        label password:
         input.w3-input(type="password" name="password")
+        label nif:
+        input.w3-input(type="text" name="nif")
+        label nCC:
+        input.w3-input(type="text" name="nCC")
+        label dataN:
+        input.w3-input(type="date" name="dataN")
+        label saldo:
+        input.w3-input(type="number" name="saldo")
         input.w3-btn.w3-blue(type="submit" value="Enviar")
 

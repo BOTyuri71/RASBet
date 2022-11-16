@@ -1,9 +1,9 @@
 var mysql = require('mysql2')
 var db_config = {
-    host: 'rasbet.mysql.database.azure.com',
-    user: 'username1',
-    password: 'Password123',
-    database: 'rasbet',
+    host: 'sql8.freesqldatabase.com',
+    user: 'sql8575971',
+    password: 'XBU6VtGqkZ',
+    database: 'sql8575971',
     timezone: "Z",
     multipleStatements: true
 }

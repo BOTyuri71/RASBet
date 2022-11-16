@@ -8,10 +8,9 @@ module.exports = router;
 router.post('/register',function(req,res){
     console.log("ON USER REGISTER")
     console.log(req.body)
-    res.jsonp('a')
-    /*User.put(req.body)
+    User.put(req.body)
         .then(user => res.jsonp(user))
-        .catch(erro => res.status(500).jsonp(erro))*/
+        .catch(erro => res.status(500).jsonp(erro))
 });
 
 router.get('/register',function(req,res){
