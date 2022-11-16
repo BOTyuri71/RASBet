@@ -2,37 +2,37 @@ const User = require("../models/user.js");
 const Users = module.exports;
 
 Users.put = (user) => {
-    if (!Users.getUser(user)) {
-        return Users.regist(user);
+    if (!User.getUser(user)) {
+        return User.regist(user);
     }
 };
 
 Users.createMov = (idUser, valor, saldo, data) => {
-    return Users.createMovimento(idUser, valor, saldo, data);
+    return User.createMovimento(idUser, valor, saldo, data);
 };
 
 Users.getMov = (idUser) => {
-    return Users.getMovimentos(idUser);
+    return User.getMovimentos(idUser);
 };
 
 Users.login = (user) => {
-    return Users.loginUser(user.email,user.password);
+    return User.loginUser(user.email,user.password);
 };
 
 Users.get = (email) => {
-    return Users.getUser(email);
+    return User.getUser(email);
 };
 
 Users.getSaldo = (idUser) => {
-    return Users.getSaldo(idUser);
+    return User.getSaldo(idUser);
 };
 
 Users.putSaldo = (idUser,valor) => {
-    return Users.putSaldo(idUser,valor);
+    return User.putSaldo(idUser,valor);
 };
 
 Users.update = (idUser, user) => {
-    return Users.updateUser(idUser, user);
+    return User.updateUser(idUser, user);
 };
 
 

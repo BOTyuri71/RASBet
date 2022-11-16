@@ -10,7 +10,7 @@ var indexRouter = require('./routes/index');
 var apostaRouter = require("./routes/aposta");
 var userRouter = require("./routes/user");
 var jogoRouter = require("./routes/jogo");
-
+var autoupdate = require('./database/autoupdate');
 var app = express();
 
 
@@ -31,6 +31,7 @@ app.use("/aposta", apostaRouter);
 app.use("/user", userRouter);
 app.use("/jogo", jogoRouter);
 
+autoupdate.updateDatabase()
 
 
 

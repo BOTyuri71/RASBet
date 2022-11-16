@@ -19,9 +19,9 @@ function getJSONP(url, success) {
 
 }
 
-exports.initScheduledJobs = () => {
+exports.updateDatabase = () => {
     const scheduledJobFunction = CronJob.schedule("*/* * * * *", () => {
-        console.log("REFILLING ");
+        console.log("UPDATING DATABASE");
 
         getJSONP('http://ucras.di.uminho.pt/v1/games/', function(data){
             console.log(data);
