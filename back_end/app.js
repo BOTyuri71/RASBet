@@ -8,7 +8,7 @@ var cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var apostaRouter = require("./routes/aposta");
-var apostadorRouter = require("./routes/apostador");
+var userRouter = require("./routes/user");
 var jogoRouter = require("./routes/jogo");
 
 var app = express();
@@ -16,7 +16,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use("/aposta", apostaRouter);
-app.use("/apostador", apostadorRouter);
+app.use("/user", userRouter);
 app.use("/jogo", jogoRouter);
 
 
@@ -36,6 +36,8 @@ app.use("/jogo", jogoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  console.log(req)
+  console.log(res)
   next(createError(404));
 });
 
