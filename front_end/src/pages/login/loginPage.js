@@ -6,6 +6,8 @@ import Header from '../../components/header/Header';
 export default function Form() {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
+    console.log(email)
+    console.log(password)
 
   return (
     <div>
