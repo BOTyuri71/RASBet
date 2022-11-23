@@ -14,51 +14,28 @@ var User = function(a) {
 }
 User.create = function(u){
     return new Promise(function (resolve, reject) {
-        bcrypt.genSalt(salt, function (err, salt) {
-            bcrypt.hash(u.password, salt, function (err, hash) {
-                sql.query("INSERT INTO Apostador (nome, email, password, dataN, nCC, nif, saldo) VALUES (?,?,?,?,?,?,?);",
-                    [u.nome, u.email, hash, u.dataN, u.nCC, u.nif, u.saldo],
-                    function (err, res) {
-                        if (err) {
-                            console.log("error: ", err);
-                            reject(err);
-                        }
-                        else {
-                            console.log(res);
-                            resolve(res.idUser);
-                        }
-                    });
-            });
+        bcrypt.hash(u.password, salt, function (err, hash) {
+            sql.query("INSERT INTO Apostador (nome, email, password, dataN, nCC, nif, saldo) VALUES (?,?,?,?,?,?,?);",
+                [u.nome, u.email, hash, u.dataN, u.nCC, u.nif, u.saldo],
+                function (err, res) {
+                    if (err) {
+                        console.log("error: ", err);
+                        reject(err);
+                    }
+                    else {
+                        console.log(res);
+                        resolve(res.idUser);
+                    }
+                });
         });
+        
     });
 }
-User.register = function(newUser) {
-    return new Promise(function (resolve, reject) {
-        User.getOne(newUser.email)
-            .then(user => {
-                if (user == null) {
-                    User.create(newUser)
-                        .then(id => {
-                            resolve(id);
-                        })
-                        .catch(err => {
-                            reject(err);
-                        });
-                }
-                else {
-                    reject("Já existe uma conta associada a este utilizador");
-                }
-            })
-            .catch(err => {
-                reject(err);
-            });
-    });
-}
-User.getOne = function(email) {
+
+User.findOne = function(email) {
     let user = null;
-    console.log("Verify if user exists " + email);
     return new Promise(function (resolve, reject) {
-        sql.query("Select * from Apostador where email= ?", email, function (err, res) {
+        sql.query("Select * from Apostador where email= ?", [email], function (err, res) {
             if (err) {
                 console.log("error: ", err);
                 reject(err);

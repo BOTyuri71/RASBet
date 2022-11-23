@@ -8,7 +8,7 @@ module.exports = router;
 router.post('/register',function(req,res){
     console.log("ON USER REGISTER")
     console.log(req.body)
-    User.put(req.body)
+    User.register(req.body)
         .then(user => res.jsonp(user))
         .catch(erro => res.status(500).jsonp(erro))
 });
@@ -59,36 +59,6 @@ router.put('/update/:iduser',function(req,res){
 
 router.post('/login',function(req,res){
     User.login(req.body)
-        .then(dados =>{
-            var result = {
-                login : false,
-                message : "Utilizador não existe."
-            }
-            if(dados.length!=0){
-                if(bcrypt.compareSync(req.body.password,dados[0].password)){
-                    User.get(dados[0].email,conn)
-                        .then(async user =>{
-                            var expirationDate = new Date();
-                            expirationDate.setHours(expirationDate.getHours() + 8);
-                            result.login = true
-                            result.message = "Credenciais corretas."
-                            result.user = user
-                            result.expirationDate = expirationDate;
-                            res.jsonp(result)
-                        })
-                        .catch(error => {console.log("Erro")
-                    res.status(500).jsonp(error)})
-                    conn.release();
-                    if(err) throw err;
-                    
-                }
-                else{
-                    result.message="Password errada."
-                }
-            }
-            else{
-                res.jsonp(result)
-            }
-        })
-        .catch(erro => res.status(500).jsonp(erro))
+        .then(user =>res.jsonp(user))
+        .catch(erro => res.status(500).jsonp(erro))     
 });

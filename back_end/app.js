@@ -31,7 +31,7 @@ app.use("/aposta", apostaRouter);
 app.use("/user", userRouter);
 app.use("/jogo", jogoRouter);
 
-autoupdate.updateDatabase()
+//autoupdate.updateDatabase()
 
 
 
