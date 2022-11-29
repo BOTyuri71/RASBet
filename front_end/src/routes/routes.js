@@ -12,7 +12,7 @@ const ApplicationRoutes = () => (
     <Route path="/login" element={<LoginPage/>}/>
     <Route path="/register" element={<RegisterPage/>}/>
     <Route path="/bet" element={<BetPage/>}/>
-    <Route path="*" element={<NotFound />} />
+    <Route path="*" element={<LoginPage />} />
   </Routes>
 );
 

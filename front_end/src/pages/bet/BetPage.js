@@ -1,5 +1,5 @@
 import {Section1} from '../../styles/form'
-import Header from '../../components/header/Header';
+import Header_user from '../../components/header_user/Header_user';
 import {H2} from '../../styles/header';
 import {Header_Sports,Search,Button,Input, SearchBar,DivBet} from '../../styles/bet';
 import {NavLink} from 'react-router-dom';
@@ -19,7 +19,7 @@ export default function BetForm(posts, setSearchResults) {
 
   return (
     <div>
-        <Header/>
+        <Header_user/>
     <div>
         <Header_Sports>
             <NavLink style={{textDecoration:0,color:"#003001"}}><H2>Todos</H2></NavLink>
