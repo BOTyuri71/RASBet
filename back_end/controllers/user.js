@@ -3,12 +3,12 @@ const Users = module.exports;
 var bcrypt = require('bcryptjs')
 const salt = 14;
 
-Users.register = (newUser) => {
+Users.register = (body) => {
     return new Promise(function (resolve, reject) {
-        User.findOne(newUser.email)
+        User.findOne(body.email)
             .then(user => {
                 if (user == null) {
-                    User.create(newUser)
+                    User.create(body.nome, body.email, body.password, body.dataN, body.nCC, body.nif, body.saldo)
                         .then(id => {
                             resolve(id);
                         })

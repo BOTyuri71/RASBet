@@ -1,9 +1,9 @@
 var mysql = require('mysql2')
 var db_config = {
-    host: 'sql8.freesqldatabase.com',
-    user: 'sql8575971',
-    password: 'XBU6VtGqkZ',
-    database: 'sql8575971',
+    host: 'sql7.freemysqlhosting.net',
+    user: 'sql7580232',
+    password: 'qVPk1Q3I1y',
+    database: 'sql7580232',
     timezone: "Z",
     multipleStatements: true
 }

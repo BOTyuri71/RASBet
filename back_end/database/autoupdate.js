@@ -16,7 +16,6 @@ function getJSONP(url, success) {
 
     script.src = url.replace('callback=?', 'callback=' + ud);
     head.appendChild(script);
-
 }
 
 exports.updateDatabase = () => {
