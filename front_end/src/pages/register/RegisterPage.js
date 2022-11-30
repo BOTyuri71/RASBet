@@ -4,9 +4,9 @@ import DatePicker from 'react-date-picker';
 import {Register,Col1,Img1,Div1,Section1,Form1,Input1,Button1} from '../../styles/form'
 import Header from '../../components/header/Header';
 import axios from 'axios'
+import AuthContext from "../../context/AuthContext";
 
 export default function Form() {
-    const errorRef = useRef();
 
     const [emailReg,setEmail] = useState('')
     const [nomeReg,setNome] = useState('')
@@ -14,26 +14,13 @@ export default function Form() {
     const [dateReg, setDate] = useState(new Date())
     const [ccReg,setCC] = useState('')
     const [nifReg,setNif] = useState('')
-    const [errorMSg,setError] = useState('')
+    const { signUp } = React.useContext(AuthContext);
 
-    useEffect(()=>{setError('')},[emailReg,nomeReg,passwordReg,dateReg,ccReg,nifReg])
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        if(nomeReg != '' && passwordReg != '' && dateReg != '' && ccReg != '' && nifReg != '')            
-         axios.post(`http://localhost:9000/user/register`, 
-          {nome: nomeReg,
-          email: emailReg,
-          password: passwordReg,
-          nif: nifReg,
-          nCC: ccReg,
-          dataN: dateReg})
-            .then(res => {
-            console.log(res.data);
-            })
-        else
-        window.location.reload(false);    
-        }
+    const registo = async () =>{
+        const params = {nomeReg,emailReg,passwordReg,dateReg,ccReg,nifReg}
+        const response = await signUp(params)
+        console.log(response)
+    }
 
     return (
         <div>
@@ -58,14 +45,13 @@ export default function Form() {
                     />
                     <Input1 type="text" autoComplete='off' value={ccReg} onChange={e=> setCC(e.target.value)} placeholder='Número do CC' required></Input1>
                     <Input1 type="text" autoComplete='off' value={nifReg} onChange={e=> setNif(e.target.value)} placeholder='NIF' required></Input1>
-                    <p ref={errorRef} aria-live="assertive">{errorMSg}</p>
                     <p>Já tem uma conta?<br />
                             <span>
                                 <a href='/login'>Entre!</a>
                             </span>
                           </p>
 
-                    <Button1 onClick={handleSubmit} link='/register'>Concluir</Button1>
+                    <Button1 onClick={() => {nomeReg!='' && emailReg!='' && passwordReg!='' && dateReg!='' && ccReg!='' && nifReg!=''? registo() : alert("Todos os campos são obrigatórios!")}} link='/register'>Concluir</Button1>
                 </Form1>
             </Col1>
             <div className='col-2'>

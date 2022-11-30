@@ -3,7 +3,7 @@ import logo from '../../assets/logo.png';
 import {NavLink} from 'react-router-dom';
 import {Nav,Header1,H2,Img1} from '../../styles/header';
 
-const Header_user = () =>{
+const HeaderUser = () =>{
     return(
         <Nav>
             <Header1>
@@ -20,4 +20,4 @@ const Header_user = () =>{
     ) 
 }
 
-export default Header_user;
+export default HeaderUser;
