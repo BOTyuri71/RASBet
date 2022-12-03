@@ -12,11 +12,11 @@ var User = function(a) {
     this.nif = a.nif;
     this.saldo = a.saldo;
 }
-User.create = function(nome, email, password, dataN, nCC, nif, saldo){
+User.create = function(nome, email, password, dataN, nCC, nif){
     return new Promise(function (resolve, reject) {
         bcrypt.hash(password, salt, function (err, hash) {
-            sql.query("INSERT INTO Apostador (nome, email, password, dataN, nCC, nif, saldo) VALUES (?,?,?,?,?,?,?);",
-                [nome, email, hash, dataN, nCC, nif, saldo],
+            sql.query("INSERT INTO Apostador (nome, email, password, dataN, nCC, nif) VALUES (?,?,?,?,?,?);",
+                [nome, email, hash, dataN, nCC, nif],
                 function (err, res) {
                     if (err) {
                         console.log("error: ", err);

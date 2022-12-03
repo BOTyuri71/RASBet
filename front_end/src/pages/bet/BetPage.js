@@ -1,7 +1,6 @@
-import {Section1} from '../../styles/form'
-import Header from '../../components/header/Header';
+import HeaderUser from '../../components/header_user/HeaderUser';
 import {H2} from '../../styles/header';
-import {Header_Sports,Search,Button,Input, SearchBar,DivBet} from '../../styles/bet';
+import {HeaderSports,Search,Button,Input, SearchBar,DivBet} from '../../styles/bet';
 import {NavLink} from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
@@ -19,15 +18,15 @@ export default function BetForm(posts, setSearchResults) {
 
   return (
     <div>
-        <Header/>
+        <HeaderUser/>
     <div>
-        <Header_Sports>
+        <HeaderSports>
             <NavLink style={{textDecoration:0,color:"#003001"}}><H2>Todos</H2></NavLink>
             <NavLink style={{textDecoration:0,color:"#003001"}}><H2>Futebol</H2></NavLink>
             <NavLink style={{textDecoration:0,color:"#003001"}}><H2>Basquetebol</H2></NavLink>
             <NavLink style={{textDecoration:0,color:"#003001"}}><H2>Ténis</H2></NavLink>
             <NavLink style={{textDecoration:0,color:"#003001"}}><H2>Andebol</H2></NavLink>
-        </Header_Sports>
+        </HeaderSports>
     </div>
     <DivBet>
     <SearchBar>

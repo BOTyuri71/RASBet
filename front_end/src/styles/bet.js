@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import {NavLink} from 'react-router-dom';
 
-export const Header_Sports = styled.div`
+export const HeaderSports = styled.div`
     width: 100%;
     height: 50px;
     padding-left: 10%;
