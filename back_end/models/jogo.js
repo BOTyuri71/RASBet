@@ -13,7 +13,7 @@ Jogo.createUpdate = function(idJogo, data_inicio, estado, resultado) {
     return new Promise(function (resolve, reject) {
         sql.query(`INSERT INTO Jogo (idJogo, data_inicio, estado, resultado) VALUES (?,?,?,?)
                    ON DUPLICATE KEY UPDATE data_inicio = ?, estado = ?, resultado = ?;`, 
-                    [idJogo, data_inicio, estado, resultado],
+                    [idJogo, data_inicio, estado, resultado, data_inicio, estado, resultado],
             function (err, res) {
                 if (err) {
                     reject(err);
@@ -25,7 +25,7 @@ Jogo.createUpdate = function(idJogo, data_inicio, estado, resultado) {
         );
     });
 }
-Jogo.getAllJogos = function() {
+Jogo.getAll = function() {
     return new Promise(function (resolve, reject) {
         sql.query(`SELECT * FROM Jogo;`,
             function (err, res) {

@@ -27,3 +27,27 @@ Movimento.create = function (descricao,valor,saldo,data,idApostador,idMoeda) {
         );
     })
 };
+
+Movimento.getAll = function (idApostador) {
+    return new Promise(function(resolve, reject) {
+        sql.query(`SELECT mov.descricao,mov.valor, mov.saldo, mov.data, moe.nome
+                 FROM Movimento as mov
+                 INNER JOIN Moeda as moe
+                 ON mov.Moeda_idMoeda = moe.idMoeda
+                 WHERE mov.Apostador_idApostador = ?`,
+                [idApostador],
+            function (err, res) {
+                if(err) {
+                    console.log("Movimento create error", err);
+                    reject(err);
+                }
+                else{
+                    resolve(res.insertId);
+                }
+            }
+        );
+    })
+};
+
+
+module.exports=Movimento;

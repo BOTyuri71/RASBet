@@ -52,18 +52,20 @@ User.findOne = function(email) {
 }
 User.getUser = function(id) {
     return new Promise(function (resolve, reject) {
-        sql.query(`SELECT email,password,dataN,nCC,nif,saldo 
-                FROM Apostador as a 
-                WHERE a.idApostador = ?`,
-            id, function (err, res) {
+        sql.query(`SELECT *
+                   FROM Apostador as a 
+                   WHERE a.idApostador = ?`,
+                   id, 
+            function (err, res) {
                 if (err) {
                     console.log("error: ", err);
                     reject(err);
                 }
                 else {
-                    resolve(res[0]);
+                    resolve(res.idUser);
                 }
-            });
+            }
+        );
     });
 }
 User.updateUser = function(id, body) {
