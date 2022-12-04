@@ -19,6 +19,7 @@
  };
  
  export const AuthProvider = (props) => {
+
    const [state, dispatch] = React.useReducer(
      (prevState, action) => {
        switch (action.type) {
@@ -89,6 +90,23 @@
          dispatch({ type: "SIGN_OUT" });
          await removeToken();
        },
+       signUp: async (data) => {
+        const id =  await axios
+        .post("http://localhost:9000/user/register", data)
+        .then((response) => {
+            if(response.data) {
+            return response.data
+            }
+            else{
+            alert(response.status);
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+            alert("Erro ao registar!");
+        });
+        return id;
+      },
      }),
      [state, dispatch]
    );
