@@ -17,7 +17,7 @@ Apostas.createAposta = (body) => {
         }
         else{
             var data = body.data
-            Movimento.create(body.descricao,body.valorMov,saldo,data,body.idApostador,body.idMoeda)
+            Movimento.create(body.descricao,body.valorMov,body.saldo,data,body.idApostador,body.idMoeda)
                 .then(idMovimento => idmov = idMovimento)
                 .catch(err => {
                     reject(err);
