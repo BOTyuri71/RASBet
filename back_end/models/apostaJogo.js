@@ -6,7 +6,6 @@ var ApostaJogo = function(a){
     this.idOdds=a.idOdds;
 }
 
-module.exports=ApostaJogo;
 
 ApostaJogo.create = function (idAposta, idJogo, idOdds) {
     return new Promise(function(resolve, reject) {
@@ -24,3 +23,6 @@ ApostaJogo.create = function (idAposta, idJogo, idOdds) {
         );
     })
 }; 
+
+
+module.exports=ApostaJogo;

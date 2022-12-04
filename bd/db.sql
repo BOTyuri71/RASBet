@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `sql7580232`.`Apostador` (
   `idApostador` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NULL DEFAULT NULL,
   `email` VARCHAR(45) NULL DEFAULT NULL,
-  `password` VARCHAR(45) NULL DEFAULT NULL,
+  `password` VARCHAR(128) NULL DEFAULT NULL,
   `dataN` DATE NULL DEFAULT NULL,
   `nCC` VARCHAR(45) NULL DEFAULT NULL,
   `nif` VARCHAR(45) NULL DEFAULT NULL,
@@ -97,7 +97,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `sql7580232`.`Jogo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sql7580232`.`Jogo` (
-  `idJogo` INT NOT NULL AUTO_INCREMENT,
+  `idJogo` VARCHAR(64) NOT NULL,
   `data_inicio` DATETIME NULL DEFAULT NULL,
   `estado` INT NULL DEFAULT NULL,
   `resultado` VARCHAR(64) NULL DEFAULT NULL,
@@ -111,7 +111,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sql7580232`.`Aposta_has_Jogo` (
   `Aposta_idAposta` INT NOT NULL,
-  `Jogo_idJogo` INT NOT NULL,
+  `Jogo_idJogo` VARCHAR(64) NOT NULL,
   `Odds_idOdds` INT NOT NULL,
   PRIMARY KEY (`Aposta_idAposta`, `Jogo_idJogo`,`Odds_idOdds`),
   INDEX `fk_Aposta_has_Jogo_Jogo1_idx` (`Jogo_idJogo` ASC),
@@ -181,7 +181,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `sql7580232`.`Jogo_has_Equipa`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sql7580232`.`Jogo_has_Equipa` (
-  `Jogo_idJogo` INT NOT NULL,
+  `Jogo_idJogo` VARCHAR(64) NOT NULL,
   `Equipa_nome` VARCHAR(128) NOT NULL,
   PRIMARY KEY (`Jogo_idJogo`, `Equipa_nome`),
   INDEX `fk_Jogo_has_Equipa_Equipa1_idx` (`Equipa_nome` ASC),
@@ -226,7 +226,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `sql7580232`.`Jogo_has_Odds`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sql7580232`.`Jogo_has_Odds` (
-  `Jogo_idJogo` INT NOT NULL,
+  `Jogo_idJogo` VARCHAR(64) NOT NULL,
   `Odds_idOdds` INT NOT NULL,
   PRIMARY KEY (`Jogo_idJogo`, `Odds_idOdds`),
   INDEX `fk_Jogo_has_Odds_Odds1_idx` (`Odds_idOdds` ASC),
