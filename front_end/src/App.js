@@ -54,20 +54,15 @@ const App = () => {
   const authContext = React.useMemo(
     () => ({
       signIn: async (email, password) => {
-        console.log("http://localhost:9000/users/login")
+        console.log("http://localhost:9000/user/login")
         await axios
-        .post("http://localhost:9000/users/login", {
-            username: email,
+        .post("http://localhost:9000/user/login", {
+            email: email,
             password: password,
         })
         .then((response) => {
-            if(response.data) {
-            localStorage.setItem('userToken', JSON.stringify(response.data));
-            dispatch({ type: 'SIGN_IN', userToken: JSON.stringify(response.data) });
-
-            }else{
-            alert(response.status);
-            }
+            localStorage.setItem('userToken', response.data);
+            dispatch({ type: 'SIGN_IN', userToken: response.data});
         })
         .catch((error) => {
             console.log(error);

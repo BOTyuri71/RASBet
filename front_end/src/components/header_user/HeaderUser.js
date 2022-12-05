@@ -2,8 +2,11 @@ import React from "react";
 import logo from '../../assets/logo.png';
 import {NavLink} from 'react-router-dom';
 import {Nav,Header1,H2,Img1} from '../../styles/header';
+import AuthContext from "../../context/AuthContext";
 
 const HeaderUser = () =>{
+    const { signOut } = React.useContext(AuthContext);
+
     return(
         <Nav>
             <Header1>
@@ -14,6 +17,7 @@ const HeaderUser = () =>{
                     <NavLink style={{textDecoration:0,color:"#003001"}} exact to='/bet'><H2>Apostar</H2></NavLink>
                     <NavLink style={{textDecoration:0,color:"#003001"}} exact to='/bet'><H2>Resultados</H2></NavLink>
                     <NavLink style={{textDecoration:0,color:"#003001"}} exact to='/profile'><H2>Perfil</H2></NavLink>
+                    <NavLink style={{textDecoration:0,color:"#003001"}} onClick={() => {signOut()}}><H2>Sair</H2></NavLink>
                 </div>
             </Header1>
         </Nav>

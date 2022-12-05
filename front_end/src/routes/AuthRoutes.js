@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 
 import NotFound from "../pages/notFound/NotFoundPage";
 import RegisterPage from '../pages/register/RegisterPage';
-import LoginPage from '../pages/login/LoginPage';
+import LoginPage from '../pages/login/loginPage';
 
 const AppRoutes = () => (
   <Routes>

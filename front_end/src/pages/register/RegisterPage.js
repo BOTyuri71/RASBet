@@ -22,7 +22,6 @@ export default function Form() {
         dataN = data.toISOString().slice(0, 19).replace('T', ' ');
         const params = {nome,email,password,dataN,nCC,nif}
         const response = await signUp(params)
-        alert("Registo concluído com sucesso!")
     }
 
     return (

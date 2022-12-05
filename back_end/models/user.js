@@ -24,7 +24,7 @@ User.create = function(nome, email, password, dataN, nCC, nif){
                     }
                     else {
                         console.log(res);
-                        resolve(res.idUser);
+                        resolve(res.idApostador);
                     }
                 });
         });
