@@ -86,8 +86,8 @@ function updDatabase(){
 }
 
 exports.updateDatabase = () => {
-    //const scheduledJobFunction = CronJob.schedule("*/* * * * *", () => {
-    updDatabase()
-    //});
-    //scheduledJobFunction.start();
+    const scheduledJobFunction = CronJob.schedule("*/* * * * *", () => {
+        updDatabase()
+    });
+    scheduledJobFunction.start();
 }
