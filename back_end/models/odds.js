@@ -8,7 +8,6 @@ var Odds = function(a){
 }
 
 Odds.create = function (descricao, odd, estado) {
-    console.log(descricao,odd,estado,1)
     return new Promise(function(resolve, reject) {
         sql.query(`INSERT INTO Odds (descricao,odd,estado) VALUES (?,?,?)`,
                    [descricao, odd, estado],
@@ -27,7 +26,6 @@ Odds.create = function (descricao, odd, estado) {
 
 
 Odds.update = function (idOdds, odd, estado) {
-    console.log(idOdds,estado,2)
     return new Promise(function(resolve, reject) {
         sql.query(`UPDATE Odds
                    SET odd = ?, estado = ?
@@ -39,7 +37,7 @@ Odds.update = function (idOdds, odd, estado) {
                     reject(err);
                 }
                 else{
-                    resolve(res.insertId);
+                    resolve(res);
                 }
             }
         );
@@ -47,7 +45,6 @@ Odds.update = function (idOdds, odd, estado) {
 };
 
 Odds.getOdd = function (idJogo,descricao) {
-    console.log(idJogo,descricao,3)
     return new Promise(function(resolve, reject) {
         sql.query(`SELECT Odds.idOdds FROM Odds 
                    INNER JOIN Jogo_has_Odds AS jho
@@ -62,8 +59,7 @@ Odds.getOdd = function (idJogo,descricao) {
                     reject(err);
                 }
                 else{
-                    console.log(res)
-                    resolve(res.insertId);
+                    resolve(res);
                 }
             }
         );

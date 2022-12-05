@@ -11,8 +11,8 @@ var Jogo = function(a) {
 
 Jogo.createUpdate = function(idJogo, data_inicio, estado, resultado) {
     return new Promise(function (resolve, reject) {
-        sql.query(`INSERT INTO Jogo (idJogo, data_inicio, estado, resultado) VALUES (?,?,?,?)
-                   ON DUPLICATE KEY UPDATE data_inicio = ?, estado = ?, resultado = ?;`, 
+        sql.query(`INSERT INTO Jogo (idJogo, data_inicio, estado, resultado) VALUES (?,STR_TO_DATE(?,"%Y-%m-%dT%H:%i:%s.000Z"),?,?)
+                   ON DUPLICATE KEY UPDATE data_inicio = STR_TO_DATE(?,"%Y-%m-%dT%H:%i:%s.000Z"), estado = ?, resultado = ?;`, 
                     [idJogo, data_inicio, estado, resultado, data_inicio, estado, resultado],
             function (err, res) {
                 if (err) {

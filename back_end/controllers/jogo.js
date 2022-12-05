@@ -11,7 +11,6 @@ Jogos.createUpdate = (jogo,equipas,odds) => {
         if(jogo.completed){
             estado = 2
         }
-        console.log(jogo.commenceTime)
         Jogo.createUpdate(jogo.id, jogo.commenceTime, estado, jogo.scores)
             .then()
             .catch(err => {
