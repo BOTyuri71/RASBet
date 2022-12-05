@@ -8,7 +8,7 @@ export default function Form() {
 
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
-    const { signIn } = React.useContext(AuthContext);
+    const {signIn} = React.useContext(AuthContext);
 
     return (
         <div>
@@ -39,3 +39,4 @@ export default function Form() {
         </div>
   )
 }
+

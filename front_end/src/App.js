@@ -35,28 +35,14 @@ const App = () => {
     }
   );
 
-  
-  useEffect(() => {
-    // Fetch the token from storage then navigate to our appropriate place
-    const getToken = async () => {
-      try {
-        const jsonValue = await localStorage.getItem("userToken");
-        if (jsonValue != null) {
-          dispatch({ type: "RESTORE_TOKEN", userToken: JSON.parse(jsonValue) });
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    getToken();
-  }, []);
+
 
   const authContext = React.useMemo(
     () => ({
       signIn: async (email, password) => {
-        console.log("http://localhost:9000/user/login")
+        console.log("http://127.0.0.1:9000/user/login")
         await axios
-        .post("http://localhost:9000/user/login", {
+        .post("http://127.0.0.1:9000/user/login", {
             email: email,
             password: password,
         })
@@ -75,7 +61,7 @@ const App = () => {
       },
       signUp: async (data) => {
         const id =  await axios
-        .post("http://localhost:9000/user/register", data)
+        .post("http://127.0.0.1:9000/user/register", data)
         .then((response) => {
             if(response.data) {
             return response.data
@@ -87,7 +73,7 @@ const App = () => {
             console.log(error);
             alert("Erro ao registar!");
         });
-        return  id
+        return id
       },
     }),
     []

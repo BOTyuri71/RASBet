@@ -50,24 +50,31 @@ User.findOne = function(email) {
         });
     });
 }
+
 User.getUser = function(id) {
+    let user = null;
     return new Promise(function (resolve, reject) {
         sql.query(`SELECT *
                    FROM Apostador as a 
                    WHERE a.idApostador = ?`,
-                   id, 
+                   [id], 
             function (err, res) {
                 if (err) {
                     console.log("error: ", err);
                     reject(err);
                 }
                 else {
-                    resolve(res.idUser);
+                    if (res[0]) {
+                        console.log(res[0]);
+                        user = res[0];
+                    }
+                    resolve(user);
                 }
             }
         );
     });
 }
+
 User.updateUser = function(id, body) {
     return new Promise(function (resolve, reject) {
         sql.query(`UPDATE Apostador a

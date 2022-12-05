@@ -60,15 +60,14 @@
        }
      };
      initState();
-     console.log(state);
    });
  
    const actions = React.useMemo(
      () => ({
        signIn: async (email, password) => {
-         console.log("http://localhost:9000/user/login");
+         console.log("http://127.0.0.1:9000/user/login");
          await axios
-           .post("http://localhost:9000/user/login", {
+           .post("http://127.0.0.1:9000/user/login", {
              email: email,
              password: password,
            })
@@ -88,7 +87,7 @@
        },
        signUp: async (data) => {
         const id =  await axios
-        .post("http://localhost:9000/user/register", data)
+        .post("http://127.0.0.1:9000/user/register", data)
         .then((response) => {
             if(response.data) {
               return response.data

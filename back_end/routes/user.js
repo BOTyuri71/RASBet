@@ -33,8 +33,8 @@ router.get('/getmov/:iduser',function(req,res){
         .catch(erro => res.status(500).jsonp(erro))
 });
 
-router.get('/getUser/:email',function(req,res){
-    User.get(req.params.email)
+router.get('/getUser/',function(req,res){
+    User.get(req.body)
        .then(user => res.jsonp(user))
        .catch(erro => res.status(500).jsonp(erro))
 });

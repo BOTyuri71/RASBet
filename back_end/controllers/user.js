@@ -60,8 +60,8 @@ Users.login = (body) => {
     })
 };
 
-Users.get = (email) => {
-    return User.getUser(email);
+Users.get = (body) => {
+    return User.getUser(body.idApostador);
 };
 
 Users.getSaldo = (idUser) => {
