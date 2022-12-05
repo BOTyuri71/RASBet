@@ -2,7 +2,7 @@ var mysql = require('mysql2')
 var db_config = {
     host: 'localhost',
     user: 'root',
-    password: '1234567890',
+    password: 'gasgas20',
     database: 'rasbet',
     timezone: "Z",
     multipleStatements: true

@@ -60,26 +60,21 @@
        }
      };
      initState();
-     console.log(state);
    });
  
    const actions = React.useMemo(
      () => ({
        signIn: async (email, password) => {
-         console.log("http://localhost:9000/users/login");
+         console.log("http://127.0.0.1:9000/user/login");
          await axios
-           .post("http://localhost:9000/users/login", {
-             username: email,
+           .post("http://127.0.0.1:9000/user/login", {
+             email: email,
              password: password,
            })
            .then((response) => {
-             if (response.data) {
                let token = response.data;
                setToken(token);
                dispatch({ type: "SIGN_IN", userToken: JSON.stringify(token) });
-             } else {
-               alert(response.status);
-             }
            })
            .catch((error) => {
              console.log(error);
@@ -92,10 +87,10 @@
        },
        signUp: async (data) => {
         const id =  await axios
-        .post("http://localhost:9000/user/register", data)
+        .post("http://127.0.0.1:9000/user/register", data)
         .then((response) => {
             if(response.data) {
-            return response.data
+              return response.data
             }
             else{
             alert(response.status);

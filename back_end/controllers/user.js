@@ -37,7 +37,6 @@ Users.getMov = (idUser) => {
 
 Users.login = (body) => {
     return new Promise(function (resolve, reject) {
-        console.log(body.email)
         User.findOne(body.email)
             .then(user => {
                 if(user == null){
@@ -47,7 +46,7 @@ Users.login = (body) => {
                     bcrypt.compare(body.password, user.password, (err, result) => {
                         if(result){
                             console.log("LOGIN COM SUCESSO")
-                            resolve(user)
+                            resolve(user.idApostador)
                         }
                         else{
                             reject("Password Errada")
@@ -61,8 +60,8 @@ Users.login = (body) => {
     })
 };
 
-Users.get = (email) => {
-    return User.getUser(email);
+Users.get = (body) => {
+    return User.getUser(body.idApostador);
 };
 
 Users.getSaldo = (idUser) => {
