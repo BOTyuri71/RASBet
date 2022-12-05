@@ -73,11 +73,10 @@ function updDatabase(){
                 const equipasArr = [equipaCasa,equipaFora]
                 const oddsArr = resolveOdds(value.bookmakers,value.completed,value.scores)
                 Jogos.createUpdate(value,equipasArr,oddsArr)
-                //console.log(equipasArr,oddsArr);
+
 
                 
             });
-            //console.log(json_data);
             console.timeEnd("DATABASE UPDATED")
         });
     }); 
