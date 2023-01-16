@@ -3,7 +3,7 @@
    getItem as getToken,
    setItem as setToken,
    removeItem as removeToken,
- } from "../config/local-storage";
+ } from "../config/session-storage";
  import axios from "axios";
  
  const AuthContext = React.createContext();
