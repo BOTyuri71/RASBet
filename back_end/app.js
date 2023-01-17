@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors')
 const bodyParser = require('body-parser');
-app.use(bodyParser.json()); 
 //var cors = require("cors");
 
 var indexRouter = require('./routes/index');
@@ -22,9 +21,18 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 
-app.use(cors({
-  origin: '*'
-}))
+
+const corsOpts = {
+  origin: '*',
+  credentials: true,
+  methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Accept', 'Authorization', 'Cache-Control', 'Content-Type', 'DNT', 'If-Modified-Since', 'Keep-Alive', 'Origin', 'User-Agent', 'X-Requested-With', 'Content-Length']
+}
+app.use(cors(corsOpts))
+app.options('*', cors(corsOpts))
+
+
+app.use(bodyParser.json()); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
