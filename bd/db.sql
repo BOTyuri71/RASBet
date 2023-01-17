@@ -8,27 +8,27 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema rasbet
+-- Schema sql11591349
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema rasbet
+-- Schema sql11591349
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `rasbet` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `sql11591349` DEFAULT CHARACTER SET utf8 ;
 -- -----------------------------------------------------
--- Schema rasbet
+-- Schema sql11591349
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema rasbet
+-- Schema sql11591349
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `rasbet` DEFAULT CHARACTER SET latin1 ;
-USE `rasbet` ;
+CREATE SCHEMA IF NOT EXISTS `sql11591349` DEFAULT CHARACTER SET latin1 ;
+USE `sql11591349` ;
 
 -- -----------------------------------------------------
--- Table `rasbet`.`Odds`
+-- Table `sql11591349`.`Odds`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `rasbet`.`Odds` (
+CREATE TABLE IF NOT EXISTS `sql11591349`.`Odds` (
   `idOdds` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(128) NULL,
   `odd` FLOAT NULL,
@@ -38,21 +38,21 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `rasbet`.`Moeda`
+-- Table `sql11591349`.`Moeda`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `rasbet`.`Moeda` (
+CREATE TABLE IF NOT EXISTS `sql11591349`.`Moeda` (
   `idMoeda` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NULL,
   `saldo` VARCHAR(45) NULL,
   PRIMARY KEY (`idMoeda`))
 ENGINE = InnoDB;
 
-USE `rasbet` ;
+USE `sql11591349` ;
 
 -- -----------------------------------------------------
--- Table `rasbet`.`Apostador`
+-- Table `sql11591349`.`Apostador`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `rasbet`.`Apostador` (
+CREATE TABLE IF NOT EXISTS `sql11591349`.`Apostador` (
   `idApostador` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NULL DEFAULT NULL,
   `email` VARCHAR(45) NULL DEFAULT NULL,
@@ -66,9 +66,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `rasbet`.`Aposta`
+-- Table `sql11591349`.`Aposta`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `rasbet`.`Aposta` (
+CREATE TABLE IF NOT EXISTS `sql11591349`.`Aposta` (
   `idAposta` INT NOT NULL AUTO_INCREMENT,
   `dataCriacao` DATETIME NULL DEFAULT NULL,
   `valor` FLOAT NULL DEFAULT NULL,
@@ -81,12 +81,12 @@ CREATE TABLE IF NOT EXISTS `rasbet`.`Aposta` (
   INDEX `fk_Aposta_Moeda1_idx` (`Moeda_idMoeda` ASC),
   CONSTRAINT `fk_Aposta_Apostador`
     FOREIGN KEY (`Apostador_idApostador`)
-    REFERENCES `rasbet`.`Apostador` (`idApostador`)
+    REFERENCES `sql11591349`.`Apostador` (`idApostador`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Aposta_Moeda1`
     FOREIGN KEY (`Moeda_idMoeda`)
-    REFERENCES `rasbet`.`Moeda` (`idMoeda`)
+    REFERENCES `sql11591349`.`Moeda` (`idMoeda`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -94,9 +94,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `rasbet`.`Jogo`
+-- Table `sql11591349`.`Jogo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `rasbet`.`Jogo` (
+CREATE TABLE IF NOT EXISTS `sql11591349`.`Jogo` (
   `idJogo` VARCHAR(64) NOT NULL,
   `data_inicio` DATETIME NULL DEFAULT NULL,
   `estado` INT NULL DEFAULT NULL,
@@ -107,9 +107,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `rasbet`.`Aposta_has_Jogo`
+-- Table `sql11591349`.`Aposta_has_Jogo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `rasbet`.`Aposta_has_Jogo` (
+CREATE TABLE IF NOT EXISTS `sql11591349`.`Aposta_has_Jogo` (
   `Aposta_idAposta` INT NOT NULL,
   `Jogo_idJogo` VARCHAR(64) NOT NULL,
   `Odds_idOdds` INT NOT NULL,
@@ -119,17 +119,17 @@ CREATE TABLE IF NOT EXISTS `rasbet`.`Aposta_has_Jogo` (
   INDEX `fk_Aposta_has_Jogo_Odds1_idx` (`Odds_idOdds` ASC),
   CONSTRAINT `fk_Aposta_has_Jogo_Aposta1`
     FOREIGN KEY (`Aposta_idAposta`)
-    REFERENCES `rasbet`.`Aposta` (`idAposta`)
+    REFERENCES `sql11591349`.`Aposta` (`idAposta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Aposta_has_Jogo_Jogo1`
     FOREIGN KEY (`Jogo_idJogo`)
-    REFERENCES `rasbet`.`Jogo` (`idJogo`)
+    REFERENCES `sql11591349`.`Jogo` (`idJogo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Aposta_has_Jogo_Odds1`
     FOREIGN KEY (`Odds_idOdds`)
-    REFERENCES `rasbet`.`Odds` (`idOdds`)
+    REFERENCES `sql11591349`.`Odds` (`idOdds`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -137,9 +137,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `rasbet`.`Equipa`
+-- Table `sql11591349`.`Equipa`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `rasbet`.`Equipa` (
+CREATE TABLE IF NOT EXISTS `sql11591349`.`Equipa` (
   `nome` VARCHAR(128) NOT NULL,
   `desporto` VARCHAR(64) NULL DEFAULT NULL,
   `pais` VARCHAR(64) NULL DEFAULT NULL,
@@ -150,9 +150,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `rasbet`.`Movimento`
+-- Table `sql11591349`.`Movimento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `rasbet`.`Movimento` (
+CREATE TABLE IF NOT EXISTS `sql11591349`.`Movimento` (
   `idMovimento` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(64) NULL DEFAULT NULL,
   `valor` FLOAT NULL DEFAULT NULL,
@@ -165,12 +165,12 @@ CREATE TABLE IF NOT EXISTS `rasbet`.`Movimento` (
   INDEX `fk_Movimento_Moeda1_idx` (`Moeda_idMoeda` ASC),
   CONSTRAINT `fk_Movimento_Apostador1`
     FOREIGN KEY (`Apostador_idApostador`)
-    REFERENCES `rasbet`.`Apostador` (`idApostador`)
+    REFERENCES `sql11591349`.`Apostador` (`idApostador`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Movimento_Moeda1`
     FOREIGN KEY (`Moeda_idMoeda`)
-    REFERENCES `rasbet`.`Moeda` (`idMoeda`)
+    REFERENCES `sql11591349`.`Moeda` (`idMoeda`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -178,9 +178,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `rasbet`.`Jogo_has_Equipa`
+-- Table `sql11591349`.`Jogo_has_Equipa`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `rasbet`.`Jogo_has_Equipa` (
+CREATE TABLE IF NOT EXISTS `sql11591349`.`Jogo_has_Equipa` (
   `Jogo_idJogo` VARCHAR(64) NOT NULL,
   `Equipa_nome` VARCHAR(128) NOT NULL,
   PRIMARY KEY (`Jogo_idJogo`, `Equipa_nome`),
@@ -188,21 +188,21 @@ CREATE TABLE IF NOT EXISTS `rasbet`.`Jogo_has_Equipa` (
   INDEX `fk_Jogo_has_Equipa_Jogo1_idx` (`Jogo_idJogo` ASC),
   CONSTRAINT `fk_Jogo_has_Equipa_Jogo1`
     FOREIGN KEY (`Jogo_idJogo`)
-    REFERENCES `rasbet`.`Jogo` (`idJogo`)
+    REFERENCES `sql11591349`.`Jogo` (`idJogo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Jogo_has_Equipa_Equipa1`
     FOREIGN KEY (`Equipa_nome`)
-    REFERENCES `rasbet`.`Equipa` (`nome`)
+    REFERENCES `sql11591349`.`Equipa` (`nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 -- -----------------------------------------------------
--- Table `rasbet`.`Apostador_has_Moeda`
+-- Table `sql11591349`.`Apostador_has_Moeda`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `rasbet`.`Apostador_has_Moeda` (
+CREATE TABLE IF NOT EXISTS `sql11591349`.`Apostador_has_Moeda` (
   `Apostador_idApostador` INT NOT NULL,
   `Moeda_idMoeda` INT NOT NULL,
   PRIMARY KEY (`Apostador_idApostador`, `Moeda_idMoeda`),
@@ -210,12 +210,12 @@ CREATE TABLE IF NOT EXISTS `rasbet`.`Apostador_has_Moeda` (
   INDEX `fk_Apostador_has_Moeda_Apostador1_idx` (`Apostador_idApostador` ASC),
   CONSTRAINT `fk_Apostador_has_Moeda_Apostador1`
     FOREIGN KEY (`Apostador_idApostador`)
-    REFERENCES `rasbet`.`Apostador` (`idApostador`)
+    REFERENCES `sql11591349`.`Apostador` (`idApostador`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Apostador_has_Moeda_Moeda1`
     FOREIGN KEY (`Moeda_idMoeda`)
-    REFERENCES `rasbet`.`Moeda` (`idMoeda`)
+    REFERENCES `sql11591349`.`Moeda` (`idMoeda`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -223,9 +223,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `rasbet`.`Jogo_has_Odds`
+-- Table `sql11591349`.`Jogo_has_Odds`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `rasbet`.`Jogo_has_Odds` (
+CREATE TABLE IF NOT EXISTS `sql11591349`.`Jogo_has_Odds` (
   `Jogo_idJogo` VARCHAR(64) NOT NULL,
   `Odds_idOdds` INT NOT NULL,
   PRIMARY KEY (`Jogo_idJogo`, `Odds_idOdds`),
@@ -233,12 +233,12 @@ CREATE TABLE IF NOT EXISTS `rasbet`.`Jogo_has_Odds` (
   INDEX `fk_Jogo_has_Odds_Jogo1_idx` (`Jogo_idJogo` ASC),
   CONSTRAINT `fk_Jogo_has_Odds_Jogo1`
     FOREIGN KEY (`Jogo_idJogo`)
-    REFERENCES `rasbet`.`Jogo` (`idJogo`)
+    REFERENCES `sql11591349`.`Jogo` (`idJogo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Jogo_has_Odds_Odds1`
     FOREIGN KEY (`Odds_idOdds`)
-    REFERENCES `rasbet`.`Odds` (`idOdds`)
+    REFERENCES `sql11591349`.`Odds` (`idOdds`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
